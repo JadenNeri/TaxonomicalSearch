@@ -10,4 +10,9 @@ add_executable(Project2
     .idea/Project2.iml
     .idea/vcs.xml
     .idea/workspace.xml
-    README.md)
+    README.md
+    src/main.cpp
+    src/main.h
+    src/Entry.cpp
+    src/Entry.h
+)
