@@ -6,6 +6,7 @@
 #define PARSER_H
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include "Entry.h"
 using namespace std;
