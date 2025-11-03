@@ -17,4 +17,6 @@ add_executable(Project2
     src/Entry.h
         src/Parser.cpp
         src/Parser.h
+        src/traversals.cpp
+        src/traversals.h
 )

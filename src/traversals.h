@@ -5,12 +5,23 @@
 #ifndef TRAVERSALS_H
 #define TRAVERSALS_H
 
+#include <string>
+#include <vector>
+#include <stack>
+#include <queue>
 
-
-class traversals {
+/*
+ * For now, using this temporary structure for cleanliness' sake. Will need to be changed ASAP.
+ */
+struct temp_node {
+    std::string direct_value;
+    std::vector<temp_node*> children;
 
 };
 
-
+struct traversals {
+    bool depth_first(temp_node* root, const std::string& target, std::vector<std::string>& path);
+    bool breadth_first(temp_node* root, const std::string& target, std::vector<std::string>& path);
+};
 
 #endif //TRAVERSALS_H
