@@ -13,7 +13,7 @@ int main() {
     // testEntry.displayPath();
 
     Parser parser;
-    parser.parseData("notAccepted.txt");
+    parser.parseData("taxon.txt");
     for (Entry entry : parser.getEntries()) {
         entry.displayPath();
     }

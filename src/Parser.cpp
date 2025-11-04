@@ -39,35 +39,35 @@ bool Parser::parseData(string filename) {
             string element;
             stringstream lineSS(line);
             // Parse each element of each line
-            for (int i = 1; i <= 22; i++) {
+            for (int i = 1; i <= 23; i++) {
                 getline(lineSS, element, '\t');
                 // cout << element << " " << i << endl;
                 switch (i) {
-                    case 5: // Column E
+                    case 6: // Column E
                         thisEntry._sciName = element;
                         break;
-                    case 6: // Column F
+                    case 7: // Column F
                         thisEntry._genName = element;
                         break;
-                    case 10: // Column J
+                    case 11: // Column J
                         thisEntry._kingdom = element;
                         break;
-                    case 11: // Column K
+                    case 12: // Column K
                         thisEntry._phylum = element;
                         break;
-                    case 12: // Column L
+                    case 13: // Column L
                         thisEntry._class = element;
                         break;
-                    case 13: // Column M
+                    case 14: // Column M
                         thisEntry._order = element;
                         break;
-                    case 14: // Column N
+                    case 15: // Column N
                         thisEntry._family = element;
                         break;
-                    case 15: // Column O
+                    case 16: // Column O
                         thisEntry._genus = element;
                         break;
-                    case 22: // Column V
+                    case 23: // Column W
                         if (element == "accepted") {
                             isAccepted = true;
                         }
