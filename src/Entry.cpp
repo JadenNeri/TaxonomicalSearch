@@ -11,3 +11,16 @@ void Entry::displayPath() {
          << _kingdom << ", " << _phylum << ", " << _class << ", "
          << _order << ", " << _family << ", " << _genus << endl;
 }
+
+
+
+vector<string> Entry::getPath() {
+    vector<string> path;
+    path.push_back(_kingdom);
+    path.push_back(_phylum);
+    path.push_back(_class);
+    path.push_back(_order);
+    path.push_back(_family);
+    path.push_back(_genus);
+    return path;
+}

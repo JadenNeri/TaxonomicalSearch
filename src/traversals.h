@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <iostream>
 #include "TaxonTrie.h"
+#pragma once
 
 /*
  * For now, using this temporary structure for cleanliness' sake. Will need to be changed ASAP.
@@ -20,8 +21,8 @@
 
 
 struct traversals {
-    bool depth_first(TrieNode* root, const std::string& target, std::vector<std::string>& path);
-    bool breadth_first(TrieNode* root, const std::string& target, std::vector<std::string>& path);
+    static bool depth_first(TrieNode* root, const std::string& target, std::vector<std::string>& path);
+    static bool breadth_first(TrieNode* root, const std::string& target, std::vector<std::string>& path);
     static void print_traversal_path(std::vector<std::string>& path);
 };
 

@@ -23,6 +23,9 @@ vector<Entry> Parser::getEntries() {
  *         bool returns true if successful, false if unsuccessful
 */
 bool Parser::parseData(string filename) {
+    // Initialize
+    entries.clear();
+    // Open file
     string path = "../data/" + filename;
     ifstream file(path);
     if (!file.is_open()) {

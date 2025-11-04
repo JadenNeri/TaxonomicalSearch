@@ -6,6 +6,7 @@
 #define ENTRY_H
 #include <string>
 #include <iostream>
+#include <vector>
 #pragma once
 using namespace std;
 
@@ -25,6 +26,7 @@ struct Entry {
     Entry() : _sciName(""), _genName(""), _kingdom(""), _phylum(""), _class(""), _order(""),
               _family(""), _genus("") {};
     void displayPath();
+    vector<string> getPath();
 };
 
 
