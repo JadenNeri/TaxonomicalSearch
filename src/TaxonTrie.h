@@ -37,7 +37,7 @@ public:
       }
     }
 
-    void insertChild(string t, string s, bool isCreature){
+    void insertChild(string t, string s = "", bool isCreature = false){
       this->children.push_back(new TrieNode(t, s, isCreature, this));
     }
 
