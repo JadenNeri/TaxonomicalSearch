@@ -53,7 +53,9 @@ public:
  public:
 
    // TaxonTrie();
-   // ~TaxonTrie();
+   ~TaxonTrie() { //this should just recurse, as root is a trienode, trienode's destructor deletes it's children, etc
+     delete root;
+   }
    void insert(const Entry* obj, TrieNode* t, int count);
    void insert(Entry thisEntry);
    TrieNode* getRoot();
