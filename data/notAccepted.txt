@@ -1,0 +1,6 @@
+title	title	title	title	sciName	genName	title	title	title	Kingdom	Phylum	Class	Order	Family	Genus	title	title	title	title	title	title	Accepted?	title	title	title	title	title	title	title	title
+A	B	C	D	sciName1	genName1	G	H	I	Kingdom1	Phylum1	Class1	Order1	Family1	Genus1	P	Q	R	S	T	U	accepted	W	X	Y	Z	AA	AB	AC	AD
+				sciName2	genName2				Kingdom2	Phylum2	Class2	Order2	Family2	Genus2							no								
+				sciName3	genName3				Kingdom3	Phylum3	Class3	Order3	Family3	Genus3							no								
+				sciName4	genName4				Kingdom4	Phylum4	Class4	Order4	Family4	Genus4							accepted								
+				sciName5	genName5				Kingdom5	Phylum5	Class5	Order5	Family5	Genus5							no								
