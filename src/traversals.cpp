@@ -6,37 +6,37 @@
 /*
  * For the time being, using a graph-like structure to traverse; n-ary tree traversals won't work
  * since the amount of children is variable; same with structure of basic trie traversal
- * given in lecture. Assuming nodes will have a vector of their children.
+ * given in lecture. Nodes have a vector of their children in the structure
  *
  * Additionally, I haven't timed the functions within, but we should use the chrono library
  * when we actually call in main to get the execution timing.
  */
 
 
-bool traversals::depth_first(temp_node* root, const std::string& target, std::vector<std::string>& path) {
-    if (root->direct_value != "") { //if traversal is started at a node other than valueless root (for some reason) add to traversal path
-        path.push_back(root->direct_value);
+bool traversals::depth_first(TrieNode* root, const std::string& target, std::vector<std::string>& path) {
+    if (root->scientificName != "") { //if traversal is started at a node other than valueless root (for some reason) add to traversal path
+        path.push_back(root->scientificName);
     }
 
-    std::stack<temp_node*> s; //stack for DFS
+    std::stack<TrieNode*> s; //stack for DFS
     s.push(root);
-    std::unordered_map<temp_node*, temp_node*> parent_tracker; //map nodes to their parents to backtrack the correct path
+    std::unordered_map<TrieNode*, TrieNode*> parent_tracker; //map nodes to their parents to backtrack the correct path
 
     while (!s.empty()) {
-        temp_node* current = s.top();
+        TrieNode* current = s.top();
         s.pop();
 
-        if (current->direct_value == target) {
-            temp_node* temp = current;
+        if (current->scientificName == target) {
+            TrieNode* temp = current;
             while (temp != nullptr) {
-                path.push_back(temp->direct_value); //start from bottom-most search target (e.g., species), build upwards towards domain
+                path.push_back(temp->scientificName); //start from bottom-most search target (e.g., species), build upwards towards domain
                 temp = parent_tracker[temp];
             }
             std::reverse(path.begin(), path.end()); //backtracked path is reversed to get true path
             return true;
         }
 
-        for (temp_node* child : current->children) {
+        for (TrieNode* child : current->children) {
             s.push(child);
             parent_tracker[child] = current; //current node is the parent of pushed child, for backtracking
         }
@@ -45,30 +45,30 @@ bool traversals::depth_first(temp_node* root, const std::string& target, std::ve
 }
 
 //much the same as DFS just using a queue
-bool traversals::breadth_first(temp_node* root, const std::string& target, std::vector<std::string>& path) {
-    if (root->direct_value != "") {
-        path.push_back(root->direct_value);
+bool traversals::breadth_first(TrieNode* root, const std::string& target, std::vector<std::string>& path) {
+    if (root->scientificName != "") {
+        path.push_back(root->scientificName);
     }
 
-    std::queue<temp_node*> q;
+    std::queue<TrieNode*> q;
     q.push(root);
-    std::unordered_map<temp_node*, temp_node*> parent_tracker;
+    std::unordered_map<TrieNode*, TrieNode*> parent_tracker;
 
     while (!q.empty()) {
-        temp_node* current = q.front();
+        TrieNode* current = q.front();
         q.pop();
 
-        if (current->direct_value == target) {
-            temp_node* temp = current;
+        if (current->scientificName == target) {
+            TrieNode* temp = current;
             while (temp != nullptr) {
-                path.push_back(temp->direct_value);
+                path.push_back(temp->scientificName);
                 temp = parent_tracker[temp];
             }
             std::reverse(path.begin(), path.end());
             return true;
         }
 
-        for (temp_node* child : current->children) {
+        for (TrieNode* child : current->children) {
             q.push(child);
             parent_tracker[child] = current;
         }
