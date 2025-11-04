@@ -23,7 +23,8 @@ vector<Entry> Parser::getEntries() {
  *         bool returns true if successful, false if unsuccessful
 */
 bool Parser::parseData(string filename) {
-    ifstream file(filename);
+    string path = "../data/" + filename;
+    ifstream file(path);
     if (!file.is_open()) {
         cout << "[Debug_Parser] File failed to open." << endl;
         return false;
@@ -34,12 +35,13 @@ bool Parser::parseData(string filename) {
         // Parse each line
         while (getline(file, line)) {
             Entry thisEntry = Entry();
-            bool commitEntry = false;
+            bool isAccepted = false;
+            string element;
+            stringstream lineSS(line);
             // Parse each element of each line
             for (int i = 1; i <= 22; i++) {
-                string element;
-                stringstream lineSS(line);
                 getline(lineSS, element, '\t');
+                // cout << element << " " << i << endl;
                 switch (i) {
                     case 5: // Column E
                         thisEntry._sciName = element;
@@ -66,17 +68,22 @@ bool Parser::parseData(string filename) {
                         thisEntry._genus = element;
                         break;
                     case 22: // Column V
-                        if (line == "accepted") {
-                            commitEntry = true;
+                        if (element == "accepted") {
+                            isAccepted = true;
                         }
-                    default:
-                        cout << "[Debug_Parser] Unknown entry type." << endl;
+                        break;
+                    // default:
+                    //     cout << "[Debug_Parser] Unknown entry type." << endl;
+                    //     break;
                 }
-                if (commitEntry) {
-                    entries.push_back(thisEntry);
-                }
+            }
+            // cout << isAccepted << endl;
+            // cout << thisEntry._genus << endl;
+            if (isAccepted && !thisEntry._genus.empty()) {
+                entries.push_back(thisEntry);
             }
         }
     }
+    file.close();
     return true;
 }
