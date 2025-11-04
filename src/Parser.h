@@ -4,6 +4,7 @@
 
 #ifndef PARSER_H
 #define PARSER_H
+#pragma once
 #include <vector>
 #include <iostream>
 #include <sstream>
@@ -17,7 +18,6 @@ class Parser {
     // Members
     vector<Entry> entries;
 
-    // Helper Functions
     public:
     Parser();
     vector<Entry> getEntries();
