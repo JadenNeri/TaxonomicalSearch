@@ -14,10 +14,6 @@
 
 
 bool traversals::depth_first(TrieNode* root, const std::string& target, std::vector<std::string>& path) {
-    if (root->scientificName != "") { //if traversal is started at a node other than valueless root (for some reason) add to traversal path
-        path.push_back(root->scientificName);
-    }
-
     std::stack<TrieNode*> s; //stack for DFS
     s.push(root);
     std::unordered_map<TrieNode*, TrieNode*> parent_tracker; //map nodes to their parents to backtrack the correct path
@@ -29,7 +25,9 @@ bool traversals::depth_first(TrieNode* root, const std::string& target, std::vec
         if (current->scientificName == target) {
             TrieNode* temp = current;
             while (temp != nullptr) {
-                path.push_back(temp->scientificName); //start from bottom-most search target (e.g., species), build upwards towards domain
+                if (temp->scientificName != "") {
+                    path.push_back(temp->scientificName); //start from bottom-most search target (e.g., species), build upwards towards domain
+                }
                 temp = parent_tracker[temp];
             }
             std::reverse(path.begin(), path.end()); //backtracked path is reversed to get true path
@@ -46,10 +44,6 @@ bool traversals::depth_first(TrieNode* root, const std::string& target, std::vec
 
 //much the same as DFS just using a queue
 bool traversals::breadth_first(TrieNode* root, const std::string& target, std::vector<std::string>& path) {
-    if (root->scientificName != "") {
-        path.push_back(root->scientificName);
-    }
-
     std::queue<TrieNode*> q;
     q.push(root);
     std::unordered_map<TrieNode*, TrieNode*> parent_tracker;
@@ -61,7 +55,9 @@ bool traversals::breadth_first(TrieNode* root, const std::string& target, std::v
         if (current->scientificName == target) {
             TrieNode* temp = current;
             while (temp != nullptr) {
-                path.push_back(temp->scientificName);
+                if (temp->scientificName != "") {
+                    path.push_back(temp->scientificName);
+                }
                 temp = parent_tracker[temp];
             }
             std::reverse(path.begin(), path.end());
