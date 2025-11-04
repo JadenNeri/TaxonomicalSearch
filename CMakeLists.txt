@@ -19,4 +19,5 @@ add_executable(Project2
         src/Parser.h
         src/traversals.cpp
         src/traversals.h
+        src/TaxonTrie.cpp
 )
