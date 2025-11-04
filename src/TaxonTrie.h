@@ -4,6 +4,7 @@
 #include<vector>
 #include<iostream>
 #include<algorithm>
+#include "Entry.h"
 #pragma once
 using namespace std;
 
