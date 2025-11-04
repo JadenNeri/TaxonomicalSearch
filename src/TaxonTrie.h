@@ -98,4 +98,5 @@ void TaxonTrie::insert(const Entry* obj, TrieNode* t, int count = 0){
       t->insertChild(obj->Family);
     }
   }
+  
 }
