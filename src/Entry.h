@@ -5,6 +5,8 @@
 #ifndef ENTRY_H
 #define ENTRY_H
 #include <string>
+#include <iostream>
+#pragma once
 using namespace std;
 
 
@@ -22,6 +24,7 @@ struct Entry {
           _family(f), _genus(g) {};
     Entry() : _sciName(""), _genName(""), _kingdom(""), _phylum(""), _class(""), _order(""),
               _family(""), _genus("") {};
+    void displayPath();
 };
 
 
