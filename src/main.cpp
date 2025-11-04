@@ -7,6 +7,8 @@
 #include "Entry.h"
 #include "traversals.h"
 #include "TaxonTrie.h"
+#include <chrono>
+#include <iomanip>
 using namespace std;
 
 int main() {
@@ -85,10 +87,13 @@ int main() {
                     }
                 }
                 break;
-            case 3: // Search
+            case 3: { //added brackets to close case scope
+                // Search
                 cout << "Enter target taxon: ";
                 cin.ignore(1000, '\n');
                 getline(cin, target);
+                std::chrono::high_resolution_clock::time_point start; //init timers for search algo's
+                std::chrono::high_resolution_clock::time_point end;
                 while (choice2 != 1 && choice2 != 2) {
                     cout << "Which search algorithm would you like to use?" << endl;
                     cout << "1. Breadth First Search \n"
@@ -97,17 +102,24 @@ int main() {
                     cin >> choice2;
                     if (choice2 == 1) { // BFS
                         path.clear();
+                        start = chrono::high_resolution_clock::now(); //get time points for BFS
                         traversals::breadth_first(taxon.getRoot(), target, path);
+                        end = chrono::high_resolution_clock::now();
                     } else if (choice2 == 2) {  // DFS
                         path.clear();
+                        start = chrono::high_resolution_clock::now(); //and DFS
                         traversals::depth_first(taxon.getRoot(), target, path);
+                        end = chrono::high_resolution_clock::now();
                     } else {
                         cout << "Invalid Choice." << endl;
                     }
                 }
                 choice2 = -1; // Reset choice2 for future warnings
+                auto elapsed_searchtime = std::chrono::duration_cast<std::chrono::microseconds>(end - start); //end - start for total elapsed duration
                 traversals::print_traversal_path(path);
+                std::cout << std::fixed << std::setprecision(6) << "\n" << "Search took: " << (elapsed_searchtime.count() / 1e6) << " seconds" << std::endl; //iomanip to print decimal seconds
                 break;
+            }
             case 4: // Quit
                 done = true;
                 break;
