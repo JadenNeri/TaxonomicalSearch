@@ -29,7 +29,7 @@ bool Parser::parseData(string filename) {
     string path = "../data/" + filename;
     ifstream file(path);
     if (!file.is_open()) {
-        cout << "[Debug_Parser] File failed to open." << endl;
+        // cout << "[Debug_Parser] File failed to open." << endl;
         return false;
     } else {
         // Begin parsing
